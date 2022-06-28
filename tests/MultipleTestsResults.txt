@@ -1,0 +1,471 @@
+> Evaluating "D:/My Data/My Documents/Git Projects/icl-project1/tests/MultipleTests.txt"
+> Detected 117 programs
+Program: ASTNum(6)
+Type: Integer
+Value: 6
+
+Program: ASTBool(true)
+Type: Boolean
+Value: true
+
+Program: ASTBool(false)
+Type: Boolean
+Value: false
+
+Program: ASTFun(Parameters: [(x:Integer)], Body: ASTNum(6))
+Type: Closure(Params: [Integer], Body: Integer)
+Value: Closure(Params: [(x:Integer)], Body: ASTNum(6), Environment: Environment with 0 mappings stored.)
+
+Program: ASTApply(Function: ASTFun(Parameters: [(x:Integer)], Body: ASTNum(6)), Arguments: [ASTNum(5)])
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTFun(Parameters: [(x:Integer), (y:Integer)], Body: ASTNum(6)), Arguments: [ASTNum(5), ASTNum(5)])
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTFun(Parameters: [(x:Integer), (y:Integer), (z:Integer)], Body: ASTNum(6)), Arguments: [ASTNum(5), ASTNum(5), ASTNum(5)])
+Type: Integer
+Value: 6
+
+Program: ASTNew(ASTNum(6))
+Type: Cell(Type: Integer)
+Value: Cell(Value: 6)
+
+Program: ASTDeref(ASTNew(ASTNum(6)))
+Type: Integer
+Value: 6
+
+Program: ASTAssign(ID: ASTNew(ASTNum(3)), Expression: ASTNum(6))
+Type: Integer
+Value: 6
+
+Program: ASTSeq(ASTNum(5), ASTNum(6))
+Type: Integer
+Value: 6
+
+Program: ASTNum(6)
+Type: Integer
+Value: 6
+
+Program: ASTPlus(ASTNum(3), ASTNum(3))
+Type: Integer
+Value: 6
+
+Program: ASTSub(ASTNum(8), ASTNum(2))
+Type: Integer
+Value: 6
+
+Program: ASTMul(ASTNum(3), ASTNum(2))
+Type: Integer
+Value: 6
+
+Program: ASTDiv(ID: ASTNum(12), ASTNum(2))
+Type: Integer
+Value: 6
+
+Program: ASTMul(ASTNum(-1), ASTNum(6))
+Type: Integer
+Value: -6
+
+Program: ASTEquals(ASTNum(6), ASTNum(6))
+Type: Boolean
+Value: true
+
+Program: ASTEquals(ASTNum(6), ASTNum(3))
+Type: Boolean
+Value: false
+
+Program: ASTGreaterThan(ASTNum(6), ASTNum(6))
+Type: Boolean
+Value: false
+
+Program: ASTGreaterThan(ASTNum(6), ASTNum(7))
+Type: Boolean
+Value: false
+
+Program: ASTGreaterThan(ASTNum(6), ASTNum(5))
+Type: Boolean
+Value: true
+
+Program: ASTGreaterEquals(ASTNum(6), ASTNum(6))
+Type: Boolean
+Value: true
+
+Program: ASTGreaterEquals(ASTNum(6), ASTNum(7))
+Type: Boolean
+Value: false
+
+Program: ASTGreaterEquals(ASTNum(6), ASTNum(5))
+Type: Boolean
+Value: true
+
+Program: ASTLessThan(ASTNum(6), ASTNum(6))
+Type: Boolean
+Value: false
+
+Program: ASTLessThan(ASTNum(6), ASTNum(7))
+Type: Boolean
+Value: true
+
+Program: ASTLessThan(ASTNum(6), ASTNum(5))
+Type: Boolean
+Value: false
+
+Program: ASTLessEquals(ASTNum(6), ASTNum(6))
+Type: Boolean
+Value: true
+
+Program: ASTLessEquals(ASTNum(6), ASTNum(7))
+Type: Boolean
+Value: true
+
+Program: ASTLessEquals(ASTNum(6), ASTNum(5))
+Type: Boolean
+Value: false
+
+Program: ASTNot(ASTBool(true))
+Type: Boolean
+Value: false
+
+Program: ASTNot(ASTBool(false))
+Type: Boolean
+Value: true
+
+Program: ASTOr(ASTBool(true), ASTBool(true))
+Type: Boolean
+Value: true
+
+Program: ASTOr(ASTBool(true), ASTBool(false))
+Type: Boolean
+Value: true
+
+Program: ASTOr(ASTBool(false), ASTBool(true))
+Type: Boolean
+Value: true
+
+Program: ASTOr(ASTBool(false), ASTBool(false))
+Type: Boolean
+Value: false
+
+Program: ASTAnd(ASTBool(true), ASTBool(true))
+Type: Boolean
+Value: true
+
+Program: ASTAnd(ASTBool(true), ASTBool(false))
+Type: Boolean
+Value: false
+
+Program: ASTAnd(ASTBool(false), ASTBool(true))
+Type: Boolean
+Value: false
+
+Program: ASTAnd(ASTBool(false), ASTBool(false))
+Type: Boolean
+Value: false
+
+Program: ASTMul(ASTNum(-1), ASTMul(ASTNum(-1), ASTNum(6)))
+Type: Integer
+Value: 6
+
+Program: ASTMul(ASTNum(-1), ASTMul(ASTNum(-1), ASTMul(ASTNum(-1), ASTNum(6))))
+Type: Integer
+Value: -6
+
+Program: ASTMul(ASTNum(-1), ASTMul(ASTNum(-1), ASTMul(ASTNum(-1), ASTMul(ASTNum(-1), ASTNum(6)))))
+Type: Integer
+Value: 6
+
+Program: ASTSub(ASTNum(2), ASTMul(ASTNum(-1), ASTNum(4)))
+Type: Integer
+Value: 6
+
+Program: ASTPlus(ASTNum(8), ASTMul(ASTNum(-1), ASTNum(2)))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Integer, ASTNum(6))], Body: ASTNum(6))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Integer, ASTNum(6))], Body: ASTId(x))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Integer, ASTNum(6)), (y:Integer, ASTNum(7))], Body: ASTId(x))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Integer, ASTNum(6))], Body: ASTLet(Declarations: [(y:Integer, ASTNum(7))], Body: ASTId(x)))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Integer, ASTNum(7))], Body: ASTLet(Declarations: [(x:Integer, ASTNum(6))], Body: ASTId(x)))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Integer, ASTLet(Declarations: [(y:Integer, ASTNum(7))], Body: ASTId(y)))], Body: ASTLet(Declarations: [(y:Integer, ASTNum(6))], Body: ASTId(y)))
+Type: Integer
+Value: 6
+
+Program: ASTIf(If: ASTBool(true), Then: ASTNum(6), Else: ASTNum(7))
+Type: Boolean
+Value: true
+
+Program: ASTIf(If: ASTBool(false), Then: ASTNum(7), Else: ASTNum(6))
+Type: Boolean
+Value: false
+
+Program: ASTWhile(While: ASTBool(false), Do: ASTBool(true))
+Type: Boolean
+Value: false
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(1)))], Body: ASTWhile(While: ASTGreaterThan(ASTDeref(ASTId(x)), ASTNum(0)), Do: ASTSeq(ASTAssign(ID: ASTId(x), Expression: ASTNum(0)), ASTNum(6))))
+Type: Boolean
+Value: true
+
+Program: ASTSeq(ASTAnd(ASTBool(true), ASTBool(false)), ASTBool(true))
+Type: Boolean
+Value: true
+
+Program: ASTSeq(ASTBool(false), ASTAnd(ASTBool(true), ASTBool(true)))
+Type: Boolean
+Value: true
+
+Program: ASTAnd(ASTEquals(ASTNum(3), ASTNum(3)), ASTBool(true))
+Type: Boolean
+Value: true
+
+Program: ASTPlus(ASTNum(15), ASTMul(ASTNum(3), ASTMul(ASTNum(-1), ASTNum(3))))
+Type: Integer
+Value: 6
+
+Program: ASTMul(ASTLet(Declarations: [(x:Integer, ASTNum(3))], Body: ASTId(x)), ASTNum(2))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Integer, ASTNum(3))], Body: ASTMul(ASTId(x), ASTNum(2)))
+Type: Integer
+Value: 6
+
+Program: ASTMul(ASTMul(ASTNum(-1), ASTNum(3)), ASTMul(ASTNum(-1), ASTNum(2)))
+Type: Integer
+Value: 6
+
+Program: ASTMul(ASTNum(-1), ASTSeq(ASTBool(true), ASTMul(ASTNum(-1), ASTNum(6))))
+Type: Integer
+Value: 6
+
+Program: ASTNot(ASTSeq(ASTNum(3), ASTBool(false)))
+Type: Boolean
+Value: true
+
+Program: ASTMul(ASTDeref(ASTNew(ASTNum(3))), ASTNum(2))
+Type: Integer
+Value: 6
+
+Program: ASTAnd(ASTSeq(ASTNum(0), ASTBool(true)), ASTSeq(ASTNum(1), ASTBool(true)))
+Type: Boolean
+Value: true
+
+Program: ASTEquals(ASTSeq(ASTBool(true), ASTNum(0)), ASTSeq(ASTBool(true), ASTNum(0)))
+Type: Boolean
+Value: true
+
+Program: ASTPlus(ASTSeq(ASTBool(true), ASTNum(3)), ASTSeq(ASTBool(true), ASTNum(3)))
+Type: Integer
+Value: 6
+
+Program: ASTMul(ASTSeq(ASTBool(true), ASTNum(3)), ASTSeq(ASTBool(true), ASTNum(2)))
+Type: Integer
+Value: 6
+
+Program: ASTIf(If: ASTSeq(ASTBool(false), ASTBool(true)), Then: ASTSeq(ASTBool(false), ASTNum(6)), Else: ASTSeq(ASTBool(false), ASTBool(false)))
+Type: Boolean
+Value: true
+
+Program: ASTWhile(While: ASTSeq(ASTNum(1), ASTBool(false)), Do: ASTBool(true))
+Type: Boolean
+Value: false
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(1)))], Body: ASTWhile(While: ASTSeq(ASTBool(false), ASTGreaterThan(ASTDeref(ASTId(x)), ASTNum(0))), Do: ASTSeq(ASTAssign(ID: ASTId(x), Expression: ASTNum(0)), ASTNum(6))))
+Type: Boolean
+Value: true
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(3)))], Body: ASTSeq(ASTAssign(ID: ASTId(x), Expression: ASTGreaterThan(ASTNum(4), ASTNum(3))), ASTIf(If: ASTDeref(ASTId(x)), Then: ASTNum(6), Else: ASTNum(0))))
+Type: Boolean
+Value: true
+
+Program: ASTDeref(ASTNew(ASTNum(6)))
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTLet(Declarations: [(x:Cell(Type: Closure(Params: [Integer], Body: Cell(Type: Closure(Params: [Integer], Body: Integer)))), ASTSeq(ASTBool(false), ASTNew(ASTFun(Parameters: [(x:Integer)], Body: ASTNew(ASTFun(Parameters: [(y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y))))))))], Body: ASTSeq(ASTBool(false), ASTDeref(ASTApply(Function: ASTDeref(ASTId(x)), Arguments: [ASTNum(2)])))), Arguments: [ASTNum(4)])
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTFun(Parameters: [(x:Integer)], Body: ASTSeq(ASTBool(false), ASTSeq(ASTNum(3), ASTNum(6)))), Arguments: [ASTNum(4)])
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTFun(Parameters: [(x:Integer)], Body: ASTId(x)), Arguments: [ASTSeq(ASTNum(3), ASTSeq(ASTNum(4), ASTSeq(ASTNum(5), ASTNum(6))))])
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTFun(Parameters: [(x:Integer), (y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y))), Arguments: [ASTSeq(ASTBool(false), ASTSeq(ASTBool(false), ASTNum(2))), ASTSeq(ASTBool(false), ASTSeq(ASTBool(true), ASTNum(4)))])
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(a:Integer, ASTLet(Declarations: [(a:Integer, ASTNum(3)), (b:Integer, ASTNum(2))], Body: ASTPlus(ASTId(a), ASTId(b)))), (b:Integer, ASTNum(1))], Body: ASTPlus(ASTId(a), ASTId(b)))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(a:Integer, ASTNum(1)), (b:Integer, ASTNum(2))], Body: ASTLet(Declarations: [(c:Integer, ASTNum(3))], Body: ASTPlus(ASTId(a), ASTPlus(ASTId(b), ASTId(c)))))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [], Body: Integer), ASTFun(Parameters: [], Body: ASTNum(6)))], Body: ASTApply(Function: ASTId(f), Arguments: []))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(x:Integer)], Body: ASTPlus(ASTNum(3), ASTId(x))))], Body: ASTApply(Function: ASTId(f), Arguments: [ASTNum(3)]))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [Integer, Integer], Body: Integer), ASTFun(Parameters: [(x:Integer), (y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y))))], Body: ASTApply(Function: ASTId(f), Arguments: [ASTNum(2), ASTNum(4)]))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [Closure(Params: [Integer], Body: Integer), Integer], Body: Integer), ASTFun(Parameters: [(x:Closure(Params: [Integer], Body: Integer)), (y:Integer)], Body: ASTApply(Function: ASTId(x), Arguments: [ASTId(y)]))), (g:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(x:Integer)], Body: ASTPlus(ASTId(x), ASTNum(1))))], Body: ASTApply(Function: ASTId(f), Arguments: [ASTId(g), ASTNum(5)]))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [Closure(Params: [Integer], Body: Integer), Integer], Body: Integer), ASTFun(Parameters: [(x:Closure(Params: [Integer], Body: Integer)), (y:Integer)], Body: ASTApply(Function: ASTId(x), Arguments: [ASTMul(ASTId(y), ASTNum(2))]))), (g:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(x:Integer)], Body: ASTPlus(ASTId(x), ASTNum(2))))], Body: ASTApply(Function: ASTId(f), Arguments: [ASTId(g), ASTNum(2)]))
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTLet(Declarations: [(f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(x:Integer)], Body: ASTMul(ASTNum(2), ASTId(x))))], Body: ASTId(f)), Arguments: [ASTNum(3)])
+Type: Integer
+Value: 6
+
+Program: ASTPlus(ASTNum(2), ASTApply(Function: ASTLet(Declarations: [(f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(x:Integer)], Body: ASTMul(ASTNum(2), ASTId(x))))], Body: ASTId(f)), Arguments: [ASTNum(2)]))
+Type: Integer
+Value: 6
+
+Program: ASTNum(17717)
+Type: Integer
+Value: 17717
+
+Program: ASTLet(Declarations: [(x:Integer, ASTAssign(ID: ASTNew(ASTNum(5)), Expression: ASTNum(6)))], Body: ASTId(x))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [Integer, Integer], Body: Integer), ASTFun(Parameters: [(x:Integer), (y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y)))), (a:Cell(Type: Integer), ASTNew(ASTNum(3)))], Body: ASTApply(Function: ASTId(f), Arguments: [ASTSeq(ASTAssign(ID: ASTId(a), Expression: ASTNum(2)), ASTDeref(ASTId(a))), ASTSeq(ASTAssign(ID: ASTId(a), Expression: ASTNum(4)), ASTDeref(ASTId(a)))]))
+Type: Integer
+Value: 6
+
+Program: ASTDeref(ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(3)))], Body: ASTSeq(ASTAssign(ID: ASTId(x), Expression: ASTNum(6)), ASTId(x))))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(1)))], Body: ASTWhile(While: ASTGreaterThan(ASTDeref(ASTId(x)), ASTNum(0)), Do: ASTSeq(ASTAssign(ID: ASTId(x), Expression: ASTNum(0)), ASTNum(6))))
+Type: Boolean
+Value: true
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Closure(Params: [Integer, Integer], Body: Integer)), ASTNew(ASTFun(Parameters: [(x:Integer), (y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y)))))], Body: ASTApply(Function: ASTDeref(ASTId(x)), Arguments: [ASTNum(2), ASTNum(4)]))
+Type: Integer
+Value: 6
+
+Program: ASTDeref(ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(4)))], Body: ASTSeq(ASTAssign(ID: ASTId(x), Expression: ASTNum(6)), ASTId(x))))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(5))), (f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(b:Integer)], Body: ASTPlus(ASTId(b), ASTNum(1))))], Body: ASTLessThan(ASTNum(3), ASTApply(Function: ASTId(f), Arguments: [ASTMul(ASTDeref(ASTId(x)), ASTPlus(ASTNum(2), ASTNum(7)))])))
+Type: Boolean
+Value: true
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(5))), (f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(b:Integer)], Body: ASTPlus(ASTId(b), ASTNum(1))))], Body: ASTGreaterThan(ASTNum(3), ASTApply(Function: ASTId(f), Arguments: [ASTMul(ASTDeref(ASTId(x)), ASTPlus(ASTNum(2), ASTNum(7)))])))
+Type: Boolean
+Value: false
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(5))), (f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(b:Integer)], Body: ASTPlus(ASTId(b), ASTNum(1))))], Body: ASTNum(3))
+Type: Integer
+Value: 3
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(5))), (f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(b:Integer)], Body: ASTPlus(ASTId(b), ASTNum(1))))], Body: ASTApply(Function: ASTId(f), Arguments: [ASTMul(ASTDeref(ASTId(x)), ASTPlus(ASTNum(2), ASTNum(7)))]))
+Type: Integer
+Value: 46
+
+Program: ASTAnd(ASTEquals(ASTNum(3), ASTNum(3)), ASTBool(true))
+Type: Boolean
+Value: true
+
+Program: ASTMul(ASTDeref(ASTNew(ASTNum(3))), ASTNum(2))
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTLet(Declarations: [(x:Cell(Type: Closure(Params: [Integer], Body: Cell(Type: Closure(Params: [Integer], Body: Integer)))), ASTSeq(ASTBool(false), ASTNew(ASTFun(Parameters: [(x:Integer)], Body: ASTNew(ASTFun(Parameters: [(y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y))))))))], Body: ASTSeq(ASTBool(false), ASTDeref(ASTApply(Function: ASTDeref(ASTId(x)), Arguments: [ASTNum(2)])))), Arguments: [ASTNum(4)])
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [], Body: Integer), ASTFun(Parameters: [], Body: ASTNum(6)))], Body: ASTApply(Function: ASTId(f), Arguments: []))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Closure(Params: [Integer, Integer], Body: Integer)), ASTNew(ASTFun(Parameters: [(x:Integer), (y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y)))))], Body: ASTApply(Function: ASTDeref(ASTId(x)), Arguments: [ASTNum(2), ASTNum(4)]))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(1)))], Body: ASTWhile(While: ASTLessThan(ASTDeref(ASTId(x)), ASTNum(10)), Do: ASTAssign(ID: ASTId(x), Expression: ASTPlus(ASTDeref(ASTId(x)), ASTNum(1)))))
+Type: Boolean
+Value: true
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(5))), (f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(b:Integer)], Body: ASTPlus(ASTId(b), ASTNum(1))))], Body: ASTLessThan(ASTNum(3), ASTApply(Function: ASTId(f), Arguments: [ASTMul(ASTDeref(ASTId(x)), ASTPlus(ASTNum(2), ASTNum(7)))])))
+Type: Boolean
+Value: true
+
+Program: ASTAnd(ASTEquals(ASTNum(3), ASTNum(3)), ASTBool(true))
+Type: Boolean
+Value: true
+
+Program: ASTMul(ASTDeref(ASTNew(ASTNum(3))), ASTNum(2))
+Type: Integer
+Value: 6
+
+Program: ASTApply(Function: ASTLet(Declarations: [(x:Cell(Type: Closure(Params: [Integer], Body: Cell(Type: Closure(Params: [Integer], Body: Integer)))), ASTSeq(ASTBool(false), ASTNew(ASTFun(Parameters: [(x:Integer)], Body: ASTNew(ASTFun(Parameters: [(y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y))))))))], Body: ASTSeq(ASTBool(false), ASTDeref(ASTApply(Function: ASTDeref(ASTId(x)), Arguments: [ASTNum(2)])))), Arguments: [ASTNum(4)])
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [], Body: Integer), ASTFun(Parameters: [], Body: ASTNum(6)))], Body: ASTApply(Function: ASTId(f), Arguments: []))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Closure(Params: [Integer, Integer], Body: Integer)), ASTNew(ASTFun(Parameters: [(x:Integer), (y:Integer)], Body: ASTPlus(ASTId(x), ASTId(y)))))], Body: ASTApply(Function: ASTDeref(ASTId(x)), Arguments: [ASTNum(2), ASTNum(4)]))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(1)))], Body: ASTWhile(While: ASTLessThan(ASTDeref(ASTId(x)), ASTNum(10)), Do: ASTAssign(ID: ASTId(x), Expression: ASTPlus(ASTDeref(ASTId(x)), ASTNum(1)))))
+Type: Boolean
+Value: true
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(5))), (f:Closure(Params: [Integer], Body: Integer), ASTFun(Parameters: [(b:Integer)], Body: ASTPlus(ASTId(b), ASTNum(1))))], Body: ASTLessThan(ASTNum(3), ASTApply(Function: ASTId(f), Arguments: [ASTMul(ASTDeref(ASTId(x)), ASTPlus(ASTNum(2), ASTNum(7)))])))
+Type: Boolean
+Value: true
+
+Program: ASTAssign(ID: ASTNew(ASTNum(3)), Expression: ASTNum(6))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(a:Cell(Type: Integer), ASTNew(ASTNum(5)))], Body: ASTSeq(ASTAssign(ID: ASTId(a), Expression: ASTPlus(ASTDeref(ASTId(a)), ASTNum(1))), ASTDeref(ASTId(a))))
+Type: Integer
+Value: 6
+
+Program: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTNum(10))), (s:Cell(Type: Integer), ASTNew(ASTNum(0)))], Body: ASTSeq(ASTWhile(While: ASTGreaterThan(ASTDeref(ASTId(x)), ASTNum(0)), Do: ASTSeq(ASTAssign(ID: ASTId(s), Expression: ASTPlus(ASTDeref(ASTId(s)), ASTDeref(ASTId(x)))), ASTAssign(ID: ASTId(x), Expression: ASTSub(ASTDeref(ASTId(x)), ASTNum(1))))), ASTDeref(ASTId(s))))
+Type: Integer
+Value: 55
+
+Program: ASTLet(Declarations: [(f:Closure(Params: [Integer, Integer], Body: Integer), ASTFun(Parameters: [(n:Integer), (b:Integer)], Body: ASTLet(Declarations: [(x:Cell(Type: Integer), ASTNew(ASTId(n))), (s:Cell(Type: Integer), ASTNew(ASTId(b)))], Body: ASTSeq(ASTWhile(While: ASTGreaterThan(ASTDeref(ASTId(x)), ASTNum(0)), Do: ASTSeq(ASTAssign(ID: ASTId(s), Expression: ASTPlus(ASTDeref(ASTId(s)), ASTDeref(ASTId(x)))), ASTAssign(ID: ASTId(x), Expression: ASTSub(ASTDeref(ASTId(x)), ASTNum(1))))), ASTDeref(ASTId(s))))))], Body: ASTPlus(ASTApply(Function: ASTId(f), Arguments: [ASTNum(10), ASTNum(0)]), ASTApply(Function: ASTId(f), Arguments: [ASTNum(100), ASTNum(20)])))
+Type: Integer
+Value: 5125
+
+

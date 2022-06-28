@@ -1,0 +1,286 @@
+options {
+  DEBUG_PARSER = false;
+}
+
+PARSER_BEGIN(Parser)
+
+package parser;
+
+import AST.*;
+import types.*;
+import values.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Parser {}
+
+PARSER_END(Parser)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\r"
+| "\n"
+}
+
+TOKEN :
+{
+  < Num: (["0"-"9"]) + >
+  |
+  < PLUS : "+" >
+  |
+  < MINUS : "-">
+  |
+  < TIMES : "*">
+  |
+  < DIV : "/">
+  |
+  < LPAR : "(" >
+  |
+  < RPAR : ")" >
+  | 	
+  < EL: ";;" >
+  |
+  < EQUALEQUAL : "==">
+  |
+  < GREATER : ">" >
+  |
+  < GREATEREQUAL : ">=" >
+  |
+  < LESS : "<" >
+  |
+  < LESSEQUAL : "<=" >
+  | 
+  < LET: "let" >
+  |
+  < EQUAL: "=" > 
+  |
+  < IN: "in" >
+  |
+  < END: "end" >
+  |
+  < IF: "if" >
+  |
+  < THEN: "then" >
+  |
+  < ELSE: "else" >
+  |
+  < NEW: "new" >
+  |
+  < WHILE: "while" >
+  |
+  < DO: "do" >
+  |
+  < DEREF: "!" >
+  |
+  < COMMA: "," >
+  |
+  < ASSIGN: ":=" >
+  |
+  < BOOL: "True"|"False"|"true"|"false" >
+  |
+  < AND: "&&" >
+  |
+  < OR: "||" >
+  |
+  < NOT: "~" >
+  |
+  < SEQ: ";" >
+  |
+  < FUN: "fun" >
+  |
+  < ARROW: "->" >
+  |
+  < COLON: ":" >
+  |
+  < BOOL_TYPE: "bool" >
+  |
+  < CELL_TYPE: "cell" >
+  |
+  < INT_TYPE: "int" >
+  |
+  < PRINT: "println" >
+  | 
+  < Id: ["a"-"z","A"-"Z"] ( ["a"-"z","A"-"Z","0"-"9"] )* >
+}
+
+List<ASTNode> MultipleStart() :
+{ ASTNode t;
+  List<ASTNode> programs = new ArrayList<ASTNode>();
+}
+{
+	(
+	  t = EM() <EL> { programs.add(t); }
+	  ( t = EM() <EL> { programs.add(t); })*
+	)?
+	{ return programs; }
+}
+
+ASTNode Start():
+{ ASTNode t; }
+{
+   t = EM() <EL> { return t;}
+}
+
+ASTNode EM():
+{ ASTNode t1;
+  ASTNode t2; }
+{
+  t1 = Exp()
+  ( <SEQ> t2 = EM() { t1 = new ASTSeq(t1, t2); } )*
+  { return t1; }
+}
+
+ASTNode Exp():
+{ Token op;
+  ASTNode t1, t2; }
+{
+     t1 = EA()
+     (
+       (   op = <EQUALEQUAL>
+         | op = <GREATER>
+         | op = <GREATEREQUAL>
+         | op = <LESS>
+         | op = <LESSEQUAL>
+         | op = <AND>
+         | op = <OR>
+       ) t2 = EA()
+       		{ if (op.kind == EQUALEQUAL) t1 = new ASTEquals(t1,t2);
+              else if (op.kind == GREATER) t1 = new ASTGreaterThan(t1,t2);
+              else if (op.kind == GREATEREQUAL) t1 = new ASTGreaterEquals(t1,t2);
+              else if (op.kind == LESS) t1 = new ASTLessThan(t1,t2);
+              else if (op.kind == LESSEQUAL) t1 = new ASTLessEquals(t1,t2);
+              else if (op.kind == AND) t1 = new ASTAnd(t1,t2);
+              else if (op.kind == OR) t1 = new ASTOr(t1,t2);
+            } 
+     ) *
+    { return t1; } 
+}
+
+ASTNode EA():
+{ Token op;
+  ASTNode t1;
+  ASTNode t2;
+}
+{
+	t1 = Term() ( ( op = <PLUS> | op = <MINUS> ) t2 = EA()
+	 { if (op.kind == PLUS) t1 = new ASTPlus(t1,t2);
+       else if (op.kind == MINUS) t1 = new ASTSub(t1,t2);
+	 }) *
+	{ return t1; }
+}
+
+ASTNode Term() :
+{ Token op;
+  ASTNode f1;
+  ASTNode t2;
+  List<ASTNode> args;}
+{
+	f1 = Fact()
+	(
+		( ( op = <TIMES> | op = <DIV> ) t2 = Term()
+			{ if (op.kind == TIMES) f1 = new ASTMul(f1,t2);
+			  else if (op.kind == DIV) f1 = new ASTDiv(f1,t2); }
+		  )+
+		|
+		( <LPAR> args = ArgList() <RPAR> ) { f1 = new ASTApply(f1,args); }
+		|
+		<ASSIGN> t2 = Exp() { f1 = new ASTAssign(f1,t2); }
+	)*
+	{ return f1; }
+}
+
+List<ASTNode> ArgList() :
+{ Token n;
+  ASTNode t1;
+  List<ASTNode> args = new ArrayList<ASTNode>();
+}
+{
+	(
+	  t1 = EM() { args.add(t1); }
+	  ( <COMMA> t1 = EM() { args.add(t1); })*
+	)? 
+	  { return args; }
+}
+
+List<IType> TypeList() :
+{ IType t1;
+  List<IType> types = new ArrayList<IType>();
+}
+{
+	(
+	  t1 = Type() { types.add(t1); }
+	  ( <COMMA> t1 = Type() { types.add(t1); })*
+	)? 
+	  { return types; }
+}
+
+IType Type() :
+{
+	IType type;
+	List<IType> typesList;
+}
+{
+	<BOOL_TYPE> { return TBool.getInstance(); }
+	|
+	<CELL_TYPE> <LPAR> type = Type() <RPAR> { return new TCell(type); }
+	|
+	<LPAR> typesList = TypeList() <RPAR> type = Type() { return new TClosure(typesList, type); }
+	|
+	<INT_TYPE> { return TInt.getInstance(); }
+}
+
+List<Parameter> ParameterList() :
+{ Token n;
+  IType type;
+  Token otherType;
+  List<Parameter> params = new ArrayList<Parameter>();
+}
+{
+	(
+	  n = <Id> <COLON> type = Type() { params.add(new Parameter(n.image, type)); }
+	  ( <COMMA> n = <Id> <COLON> type = Type() { params.add(new Parameter(n.image, type)); } )*
+	)?
+	  { return params; }
+}
+
+ASTNode Fact() :
+{ Token n; 
+  ASTNode t1;
+  ASTNode t2;
+  ASTNode t3;
+  List<Declaration> decl;
+  List<Parameter> params;
+  IType type; }
+{
+   <MINUS> t1 = Fact() { return new ASTMul(new ASTNum(new VInt(-1)),t1); } //This is the unary expression -E. Switches the integer sign (negative/positive)
+   |
+   <NOT> t1 = Fact() { return new ASTNot(t1); }
+   |
+   n = <Num> { return new ASTNum(new VInt(Integer.parseInt(n.image))); } 
+   | 
+   n = <Id> { return new ASTId(n.image); }
+   |
+   n = <BOOL> { return new ASTBool(new VBool(Boolean.parseBoolean(n.image))); }
+   |
+   <LET> { decl = new ArrayList<Declaration>(); }
+	   (
+	     n = <Id> <COLON> type = Type() <EQUAL> t1 = EM()
+	     { decl.add(new Declaration(n.image, type, t1)); }
+	   )+ <IN> t2 = EM() <END> { return new ASTLet(decl,t2); }
+   |
+   <FUN> params = ParameterList() <ARROW> t1 = EM() <END> { return new ASTFun(params, t1); }
+   |
+   <LPAR> t1 = EM() <RPAR> { return t1; }
+   |
+   <NEW> t1 = Fact() { return new ASTNew(t1); }
+   |
+   <DEREF> t1 = Fact() { return new ASTDeref(t1); }
+   |
+   <IF> t1 = EM() <THEN> t2 = EM() <ELSE> t3 = EM() <END> { return new ASTIf(t1,t2,t3); }
+   |
+   <WHILE> t1 = EM() <DO> t2 = EM() <END> { return new ASTWhile(t1,t2); }
+   |
+   <PRINT> t1 = Exp() { return new ASTPrint(t1); }
+}
